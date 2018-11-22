@@ -21,13 +21,34 @@ function getMatchData(year){
         return da;
     }
     
+function getDeliveriesData(min,max){
 
+    var delData=fs.readFileSync('deliveries.csv','utf8')
+    var eachval = geteachVal(min,max,delData.split('\n'));
+    //console.log(eachval.length);
+    return eachval;
+}
 
-// console.log(data)
-//getData(2015);
+function geteachVal(min,max,arr){
+    let del = [];
+    for(let i=0;i<arr.length;i++)
+    {
+    let newArr=arr[i].split(",");
+    let x= parseInt(newArr[0]);
+    if(x>=min&&x<=max){
+     del.push(arr[i]);
+    // console.log(newArr[0]);
+    }
+    
+}
+//console.log(del.length);
+return del;
+}
 
-
+// getDeliveriesData(3,3);
+// console.log(getDeliveriesData())
 
 module.exports = {
-    getMatchData : getMatchData
+    getMatchData : getMatchData,
+    getDeliveriesData:getDeliveriesData
 }
