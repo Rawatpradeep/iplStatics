@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Rawatpradeep/iplStatics#readme",
   "dependencies": {
-    "convert-csv-to-json": "0.0.13"
+    "convert-csv-to-json": "0.0.13",
+    "fs": "0.0.1-security"
   }
 }
