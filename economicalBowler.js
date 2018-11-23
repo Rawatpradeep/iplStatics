@@ -13,13 +13,19 @@ var DeleveriesData= getDetail.getDeliveriesData(MatchId[0],MatchId[MatchId.lengt
 let BowlerData=[];
 let BowlerObj={};
 let Ball=1;
+let count=1;
 for(let i=0;i<DeleveriesData.length-1;i++){
   let singleval=DeleveriesData[i].split(',');
   if(singleval[8]==(DeleveriesData[i+1].split(',')[8])){
-    
+    count++;
   if(BowlerObj.hasOwnProperty(singleval[8])){
     BowlerObj[singleval[8]]= BowlerObj[singleval[8]]+parseInt(singleval[17])
+    if(count<=6){
     BowlerObj[singleval[8]+"Ball"]++;
+                }
+                else{
+                  count=1;
+                }
   }
   else{
     BowlerObj[singleval[8]]=parseInt(singleval[17]);
@@ -29,7 +35,12 @@ for(let i=0;i<DeleveriesData.length-1;i++){
 else{
   if(BowlerObj.hasOwnProperty(singleval[8])){
     BowlerObj[singleval[8]]= BowlerObj[singleval[8]]+parseInt(singleval[17]);
-    BowlerObj[singleval[8]+"Ball"]++;
+    if(count<=6){
+      BowlerObj[singleval[8]+"Ball"]++;
+                  }
+                  else{
+                    count=1;
+                  }
   }
   else{
     BowlerObj[singleval[8]].Runs=parseInt(singleval[17]);
@@ -60,4 +71,6 @@ sortable.sort(function(a, b) {
     return a[1] - b[1];
 });
 BowlerData.push(sortable)
-console.log(BowlerData);
+for(let i= 0 ; i<10; i++){
+console.log(BowlerData[0][i]);
+}
