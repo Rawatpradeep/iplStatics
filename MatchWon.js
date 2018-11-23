@@ -1,32 +1,32 @@
 var csvToJson = require('convert-csv-to-json');
 
-var data= csvToJson.fieldDelimiter(',') .getJsonFromCsv('matches.csv');
+var SeasonData= csvToJson.fieldDelimiter(',') .getJsonFromCsv('matches.csv');
 
-let matches={};
-let obj={};
+let MatchesWonPerSeason={};
+let season={};
 count=1;
-for(let i=0;i<data.length-1;i++){
-      if((data[i].season) === (data[i+1].season)){
-            if(obj.hasOwnProperty(data[i].winner)){
-                  obj[(data[i].winner)]++;    
+for(let match=0;match<SeasonData.length-1;match++){
+      if((SeasonData[match].season) === (SeasonData[match+1].season)){
+            if(season.hasOwnProperty(SeasonData[match].winner)){
+                  season[(SeasonData[match].winner)]++;    
             }
             else{
-                obj[data[i].winner]=count;
+                season[SeasonData[match].winner]=count;
             }
 
       }
       else{
-        if(obj.hasOwnProperty(data[i].winner)){
-            obj[(data[i].winner)]++;    
+        if(season.hasOwnProperty(SeasonData[match].winner)){
+            season[(SeasonData[match].winner)]++;    
       }
       else{
-          obj[data[i].winner]=count;
+          season[SeasonData[match].winner]=count;
       }
-             matches[data[i].season]=obj
+             MatchesWonPerSeason[SeasonData[match].season]=season;
              count=1;
-             obj={};          
+             season={};          
       }
 }
 
 
-console.log(matches);
+console.log(MatchesWonPerSeason);

@@ -13,42 +13,42 @@ var DeleveriesData= getDetail.getDeliveriesData(MatchId[0],MatchId[MatchId.lengt
 let BowlerData=[];
 let BowlerObj={};
 let Ball=1;
-let count=1;
+
 for(let i=0;i<DeleveriesData.length-1;i++){
   let singleval=DeleveriesData[i].split(',');
   if(singleval[8]==(DeleveriesData[i+1].split(',')[8])){
-    count++;
+    Ball++;
   if(BowlerObj.hasOwnProperty(singleval[8])){
     BowlerObj[singleval[8]]= BowlerObj[singleval[8]]+parseInt(singleval[17])
-    if(count<=6){
+    if(Ball<=6){
     BowlerObj[singleval[8]+"Ball"]++;
                 }
                 else{
-                  count=1;
+                  Ball=1;
                 }
   }
   else{
     BowlerObj[singleval[8]]=parseInt(singleval[17]);
-    BowlerObj[singleval[8]+"Ball"]=Ball;
+    BowlerObj[singleval[8]+"Ball"]=1;
   }
 }
 else{
   if(BowlerObj.hasOwnProperty(singleval[8])){
     BowlerObj[singleval[8]]= BowlerObj[singleval[8]]+parseInt(singleval[17]);
-    if(count<=6){
+    if(Ball<=6){
       BowlerObj[singleval[8]+"Ball"]++;
                   }
                   else{
-                    count=1;
+                    Ball=1;
                   }
   }
   else{
     BowlerObj[singleval[8]].Runs=parseInt(singleval[17]);
-    BowlerObj[singleval[8]+"Ball"]=Ball;
+    BowlerObj[singleval[8]+"Ball"]=1;
   }
 }
 }
-//console.log(BowlerObj);
+console.log(BowlerObj);
  let Bowler ={};
  for(let i in BowlerObj){
    if(!(/Ball/).test(i)){
@@ -61,7 +61,7 @@ else{
      continue;
    }
    }
- 
+
  var sortable = [];
 for (var Bowlers in Bowler) {
     sortable.push([Bowlers, Bowler[Bowlers]]);
