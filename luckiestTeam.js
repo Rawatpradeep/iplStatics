@@ -26,7 +26,8 @@ function sorting(obj){
         temp[1]=obj[i]
       output.push(temp); 
   }   
-    console.log(output.sort((a,b)=>{
+      output.sort((a,b)=>{
         return b[1]-a[1];
-    }))
+    })
+    return output;
 }
