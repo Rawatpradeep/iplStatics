@@ -48,7 +48,8 @@ csv
               ar[1]=obj[i]
             arr.push(ar); 
         }   
-          console.log(arr.sort((a,b)=>{
+          arr.sort((a,b)=>{
               return b[1]-a[1];
-          }))
+          })
+          return arr;
       }
