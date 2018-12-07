@@ -13,6 +13,7 @@ for (let matches = 0; matches < matchData.length - 1; matches++) {
         matchId.push(matches + 1);
     }
 }
+matchId.push(matchData.length);
 //console.log(matchId);
 
 csv
@@ -34,7 +35,7 @@ csv
 
     })
     .on("end", function () {
-        console.log(sorting(teamRunsInPp));
+       console.log(sorting(teamRunsInPp));
     })
 
 
