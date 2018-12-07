@@ -4,7 +4,7 @@ function getMatchData(year){
     //console.log("hi");
     var val =fs.readFileSync('matches.csv','utf8')
     data = getval(val,year); 
-    return data; 
+    return JSON.parse(data); 
 }
     function getval(val,year){
         let detail=val.split('\n');
